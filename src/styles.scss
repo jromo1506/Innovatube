@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Moderustic:wght@300..800&family=Quicksand:wght@300..700&family=Varela+Round&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+:root{
+
+    --primary-light:#ffffff;
+    --primary:#1E201E;
+    --primary-dark:#ffffff;
+
+    --secondary-light:#ffffff;
+    --secondary:#3C3D37;
+    --secondary-dark:#ffffff;
+
+    --background-light:#;
+    --background:#ECDFCC;
+    --background-dark:#;
+
+    --text-light:#ffffff;
+    --text-dark:#ffffff;
+
+    
+    --title:#f79737;;
+}
+
+body{
+    background-color: #2f2f2f;
+}
+
+
+.flex{
+    display: flex;
+}
+
+.flex-c{
+    display: flex;
+    justify-content: center;
+}
+
+
+.flex-sa{
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-sb{
+    display: flex;
+    justify-content: space-between;
+}
+
+.w-100{
+    width: 100%;
+}
+
+
+.title{
+    color: var(--title);
+}
+
+.subtitle{
+   color: var(--text-light);
+}
