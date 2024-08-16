@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -11,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { VideoListComponent } from './components/video-list/video-list.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,10 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule ,
+    SweetAlert2Module.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,19 +2,45 @@
     <div class="login-form mt-lg ">
     
         <div  class="form-cont flex">
-            <div class="login-img-cont">
-                <h2>Login form</h2>
-                <div class="login-img">
-
-                    
-                </div>
-            </div>
+   
             <div class="login-form">
+                <h2>Login to your account</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="p-md flex-sb">
+                   
+                    <div class="flex-col form-cont">
+                        <div class="mt-sm">
+                            <p>Username</p>
+                            <input formControlName="username" placeholder="Username">
+                          </div>
+                          <div class="mt-sm">
+                            <p>Password</p>
+                            <input formControlName="password" placeholder="Password" type="password">
+                          
+                        
+                        </div>
+                        <div id="pwd" style="color:red;display: none;">Incomplete fields</div>
+                        <br>
+                        <div>
+                           
+                            <button type="submit">Login</button>
+                        </div>
 
-            </div>
-            
-            
-        </div>
+                    </div>
+                    <div class="flex-col form-cont images">
+                      
+                      <div>
+
+                       
+                        <br>
+                       
+                      </div>
+                      
+                    </div>
+                  </div>
+                 
+                </form>
+              </div>
        
 
     </div>
