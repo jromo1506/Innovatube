@@ -13,17 +13,17 @@ export class UsersService {
   
   addUser(user:any):Observable<any>{
     console.log(user,"Add Usuario");
-    return this.http.post(this.api.getURL + "/addUser",user);
+    return this.http.post(this.api.getURL() + "/addUser",user);
   }
 
-  getUser(id:string){
-    console.log(id,"Get Usuario");
-    return this.http.get(this.api.getURL + "/getUser/"+id);
+  getUser(user:any){
+    console.log(user,"Get Usuario");
+    return this.http.post(this.api.getURL() + "/getUser",user);
   }
 
   authUser(user:any){
-    console.log(user,"Get Usuario")
-    return this.http.post(this.api.getURL + "/authUser",user);
+    console.log(user,"auth Usuario")
+    return this.http.post(this.api.getURL() + "/authUser",user);
   }
 
 }
