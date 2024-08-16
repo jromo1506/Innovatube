@@ -10,6 +10,7 @@ import { VideoCarrouselComponent } from './components/video-carrousel/video-carr
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { VideoListComponent } from './components/video-list/video-list.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VideoListComponent } from './components/video-list/video-list.component
     VideoCarrouselComponent,
     HomeComponent,
     SearchComponent,
-    VideoListComponent
+    VideoListComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

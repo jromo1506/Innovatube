@@ -3,57 +3,36 @@
 
 
     <!-- CONTENEOR DE VIDEO -->
-    <div class="video-container">
+    <div *ngFor="let video of videos" class="video-container mt-md">
         <div class="video-image">
             Video image
         </div>
         <div class="video-info p-md">
-            <div >
-                <h2>Titulo del video</h2>
+            <div class="title-star flex-sb w-100">
+                <div>
+                    <h2>{{ video.title }}</h2>
+                </div>
+                <div class="flex star" (click)="toggleStar(video)">
+                    <i [ngClass]="video.isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                </div>
             </div>
             <div>
-               <p>Visualizaciones - Fecha subida</p> 
+                <p>{{ video.views }} - {{ video.uploadDate }}</p> 
             </div>
-
+    
             <div class="flex">
                 <div>
                     ciruclo canal 
                 </div>
-                <p> - Nombre canal</p> 
+                <p> - {{ video.channelName }}</p> 
             </div>
-
+    
             <div class="pt-md">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, omnis?</p>
+                <p>{{ video.description }}</p>
             </div>
-
         </div>
     </div>
+    <!-- FIN DEL CONTENEDOR -->
 
-     <!-- CONTENEOR DE VIDEO -->
-     <div class="video-container pt-md">
-        <div class="video-image">
-            Video image
-        </div>
-        <div class="video-info p-md">
-            <div >
-                <h2>Titulo del video</h2>
-            </div>
-            <div>
-               <p>Visualizaciones - Fecha subida</p> 
-            </div>
-
-            <div class="flex">
-                <div>
-                    ciruclo canal 
-                </div>
-                <p> - Nombre canal</p> 
-            </div>
-
-            <div class="pt-md">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, omnis?</p>
-            </div>
-
-        </div>
-    </div>
 
 </div>
