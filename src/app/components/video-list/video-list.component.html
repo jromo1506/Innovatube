@@ -1,37 +1,44 @@
 
 <div class="video-list">
 
+<!-- 
+    <div *ngFor="let video of videosYT">
+        <h3>{{ video.snippet.title }}</h3>
+        <img [src]="video.snippet.thumbnails.default.url" alt="{{ video.snippet.title }}">
+        <p>{{ video.snippet.description }}</p>
+      </div> -->
 
     <!-- CONTENEOR DE VIDEO -->
-    <div *ngFor="let video of videos" class="video-container mt-md">
-        <div class="video-image">
-            Video image
-        </div>
+    <div *ngFor="let video of videosYT" class="video-container mt-md">
+        <img [src]="video.snippet.thumbnails.medium.url" alt="{{ video.snippet.title }}">
+        <!-- <div class="video-image">
+        
+        </div> -->
         <div class="video-info p-md">
-            <div class="title-star flex-sb w-100">
-                <div>
-                    <h2>{{ video.title }}</h2>
-                </div>
-                <div class="flex star" (click)="toggleStar(video)">
-                    <i [ngClass]="video.isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
-                </div>
-            </div>
+          <div class="title-star flex-sb w-100">
             <div>
-                <p>{{ video.views }} - {{ video.uploadDate }}</p> 
+              <h2>{{ video.snippet.title }}</h2>
             </div>
-    
-            <div class="flex">
-                <div>
-                    ciruclo canal 
-                </div>
-                <p> - {{ video.channelName }}</p> 
+            <div class="flex star" (click)="toggleStar(video)">
+              <i [ngClass]="video.isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
             </div>
-    
-            <div class="pt-md">
-                <p>{{ video.description }}</p>
+          </div>
+          <div>
+            <!-- Aquí se muestra un texto fijo ya que no tenemos información de vistas ni fecha de carga -->
+            <p>Información no disponible</p> 
+          </div>
+          <div class="flex">
+            <div>
+              <!-- Aquí se muestra un texto fijo ya que no tenemos información del canal -->
+              Canal no disponible
             </div>
+            <p> - {{ video.snippet.channelTitle }}</p> 
+          </div>
+          <div class="pt-md">
+            <p>{{ video.snippet.description }}</p>
+          </div>
         </div>
-    </div>
+      </div>
     <!-- FIN DEL CONTENEDOR -->
 
 

@@ -11,7 +11,7 @@
 
                 <div class="searchbar">
                     <i class="fa-solid fa-magnifying-glass" routerLink="Search"></i>
-                    <input>
+                    <input [(ngModel)]="searchQuery" placeholder="Enter search terms" (keydown.enter)="onSearch()">
                 </div>
 
            </div>

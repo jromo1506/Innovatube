@@ -1,4 +1,4 @@
-import { Component , Input} from '@angular/core';
+import { Component , Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-video-list',
@@ -8,6 +8,7 @@ import { Component , Input} from '@angular/core';
 export class VideoListComponent {
   isStarred: boolean = false;
   @Input() videosYT: any[] = [];
+  
   videos = [
     { 
       id: 1, 
@@ -38,7 +39,21 @@ export class VideoListComponent {
     }
   ];
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['videos']) {
+      // Aquí puedes manejar cualquier lógica adicional cuando los videos cambian
+      console.log('Videos changed:', changes['videos'].currentValue);
+    }
+  }
+
+  
+
   toggleStar(video: any) {
     video.isStarred = !video.isStarred;
+
+    const videoId = video.id.videoId;
+    console.log('Video ID:', videoId);
   }
+
 }
