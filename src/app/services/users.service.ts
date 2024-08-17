@@ -10,6 +10,9 @@ export class UsersService {
 
   constructor(private api:GlobalApiService, private http:HttpClient) { }
 
+
+  
+
   
   addUser(user:any):Observable<any>{
     console.log(user,"Add Usuario");

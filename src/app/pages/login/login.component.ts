@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private userService:UsersService) {
+  constructor(private userService:UsersService,private router:Router) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required])
@@ -23,6 +24,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+
       this.authUser();   
     } else {
       var pwdMiss=document.getElementById("pwd") as HTMLDivElement;
@@ -32,25 +34,37 @@ export class LoginComponent {
 
 
   authUser(){
-    this.userService.authUser(this.loginForm.value).pipe(
-      switchMap((auth: any) => this.userService.getUser(auth))
-    ).subscribe(
-      (found: any) => {
+    this.userService.authUser(this.loginForm.value).subscribe(
+      (found:any)=>{
         Swal.fire({
           title: 'Success',
-          text: 'Your account has been registered',
+          text: 'Welcome back ' +this.loginForm.value.username,
           background: '#2e2e2e',  // Fondo oscuro
           color: '#ffffff',
           icon: 'success',
-          confirmButtonColor: '#f79737',
-          confirmButtonText: 'Yeah'
-        });
+          timer: 2000,  
+          timerProgressBar: true,
+          showConfirmButton: false
+        }).then(() => {
+          
+          this.router.navigate(['/Home']);
+        });;
       },
-      (error) => {
-        // Manejar errores aquí, si es necesario
-        console.error('Error:', error);
+      (error:any)=>{
+        Swal.fire({
+          title: 'Error',
+          text: 'Authentication failed or user not found',
+          background: '#2e2e2e',
+          color: '#ffffff',
+          icon: 'error',
+          confirmButtonColor: '#f79737',
+          confirmButtonText: 'OK'
+        });
       }
-    );
+);
+
+
+
   }
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , Input} from '@angular/core';
 
 @Component({
   selector: 'app-video-list',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class VideoListComponent {
   isStarred: boolean = false;
+  @Input() videosYT: any[] = [];
   videos = [
     { 
       id: 1, 
