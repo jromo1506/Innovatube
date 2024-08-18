@@ -18,12 +18,15 @@ export class VideoListComponent {
 
 
 
+
   constructor(private videosService:VideosService, private userAuth:UserAuthService,) {}
 
   ngOnInit(): void {
     this.userAuth.credentials$.subscribe(credentials => {
       this.credentials = credentials;
     });
+
+    
   }
 
  
