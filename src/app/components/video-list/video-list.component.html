@@ -8,6 +8,110 @@
         <p>{{ video.snippet.description }}</p>
       </div> -->
 
+
+
+    <!-- DEBUG -->
+    <div  class="video-container mt-md">
+      
+      <!-- <div class="video-image">
+      
+      </div> -->
+      <div class="video-info p-md">
+        <div class="title-star flex-sb w-100">
+          <div>
+            <h2>1111111</h2>
+          </div>
+          <div class="flex star" (click)="toggleStar('1234')">
+           <i Class="fa-solid fa-star "></ i>
+        </div>
+        </div>
+        <div>
+          <!-- Aquí se muestra un texto fijo ya que no tenemos información de vistas ni fecha de carga -->
+          <p>Información no disponible</p> 
+        </div>
+        <div class="flex">
+          <div>
+            <!-- Aquí se muestra un texto fijo ya que no tenemos información del canal -->
+            Canal no disponible
+          </div>
+          <p> 111111</p> 
+        </div>
+        <div class="pt-md">
+          <p>111111</p>
+        </div>
+      </div>
+    </div>
+
+    <div  class="video-container mt-md">
+      
+      <!-- <div class="video-image">
+      
+      </div> -->
+      <div class="video-info p-md">
+        <div class="title-star flex-sb w-100">
+          <div>
+            <h2>111111</h2>
+          </div>
+          <div class="flex star" (click)="toggleStar('2222')">
+           <i Class="fa-solid fa-star "></ i>
+        </div>
+        </div>
+        <div>
+          <!-- Aquí se muestra un texto fijo ya que no tenemos información de vistas ni fecha de carga -->
+          <p>Información no disponible</p> 
+        </div>
+        <div class="flex">
+          <div>
+            <!-- Aquí se muestra un texto fijo ya que no tenemos información del canal -->
+            Canal no disponible
+          </div>
+          <p> 111111</p> 
+        </div>
+        <div class="pt-md">
+          <p>111111</p>
+        </div>
+      </div>
+    </div>
+    <div  class="video-container mt-md">
+      
+      <!-- <div class="video-image">
+      
+      </div> -->
+      <div class="video-info p-md">
+        <div class="title-star flex-sb w-100">  
+          <div>
+            <h2>1111111</h2>
+          </div>
+          <div class="flex star" (click)="toggleStar('3333')">
+           <i Class="fa-solid fa-star "></ i>
+        </div>
+        </div>
+        <div>
+          <!-- Aquí se muestra un texto fijo ya que no tenemos información de vistas ni fecha de carga -->
+          <p>Información no disponible</p> 
+        </div>
+        <div class="flex">
+          <div>
+            <!-- Aquí se muestra un texto fijo ya que no tenemos información del canal -->
+            Canal no disponible
+          </div>
+          <p> 111111</p> 
+        </div>
+        <div class="pt-md">
+          <p>111111</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DEbug -->
+
+
+
+
+
+    <!-- CONTENEDORES DE LA API -->
+
     <!-- CONTENEOR DE VIDEO -->
     <div *ngFor="let video of videosYT" class="video-container mt-md">
         <img [src]="video.snippet.thumbnails.medium.url" alt="{{ video.snippet.title }}">
@@ -19,9 +123,9 @@
             <div>
               <h2>{{ video.snippet.title }}</h2>
             </div>
-            <div class="flex star" (click)="toggleStar(video)">
+            <div class="flex star" (click)="toggleStar(video.id.videoId)">
               <i [ngClass]="video.isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
-            </div>
+          </div>
           </div>
           <div>
             <!-- Aquí se muestra un texto fijo ya que no tenemos información de vistas ni fecha de carga -->

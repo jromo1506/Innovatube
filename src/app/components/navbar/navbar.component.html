@@ -18,15 +18,17 @@
 
 
            <div class="navbar-side-options flex-sa">
-                
-                <div>
-                    <i class="fa-solid fa-right-to-bracket" routerLink="Login"></i>
+                <div *ngIf="isLoggedIn" style="font-size: 20px;">
+                    Username | <span class="logout" (click)="logout()">Logout</span>
+                </div>
+                <div *ngIf="!isLoggedIn" style="font-size: 20px;">
+                    <span class="logout"  routerLink="Login">Log in</span> | <span class="logout"  routerLink="Register">Sign in</span>
                 </div>
                 <div>
-                    <i class="fa-solid fa-gear" routerLink="Favorite"></i>
+                    <i class="fa-solid fa-gear" routerLink="Register"></i>
                 </div>
                 <div>
-                    <i class="fa-solid fa-star" routerLink="Register"></i>
+                    <i class="fa-solid fa-star" routerLink="Favorite"></i>
                 </div>
            </div>
     </div>

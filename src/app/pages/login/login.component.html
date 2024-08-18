@@ -16,7 +16,12 @@
                           <div class="mt-sm">
                             <p>Password</p>
                             <input formControlName="password" placeholder="Password" type="password">
-                          
+                            
+                            <ngx-recaptcha2 #captchaElem
+                                [siteKey]="siteKey"
+                                formControlName="recaptcha">
+                              </ngx-recaptcha2>
+                         
                         
                         </div>
                         <div id="pwd" style="color:red;display: none;">Incomplete fields</div>

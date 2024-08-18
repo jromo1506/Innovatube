@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { VideoListComponent } from './components/video-list/video-list.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 @NgModule({
@@ -31,11 +32,12 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule ,
     SweetAlert2Module.forRoot(),
     HttpClientModule,
-    FormsModule
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,45 +12,50 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-
   loginForm: FormGroup;
+  siteKey: string = "6LdoQikqAAAAAK04tMycZya478n91Wu38wELZGYB";
 
-  constructor(private userService:UsersService,private router:Router) {
-    this.loginForm = new FormGroup({
+  constructor(
+    private userService: UsersService,
+    private router: Router,
+    private auth: UserAuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', Validators.required),
+      // recaptcha: new FormControl('', Validators.required)
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-
-      this.authUser();   
+      this.authUser();
     } else {
-      var pwdMiss=document.getElementById("pwd") as HTMLDivElement;
-      pwdMiss.style.display="block";
+      var pwdMiss = document.getElementById("pwd") as HTMLDivElement;
+      pwdMiss.style.display = "block";
     }
   }
 
-
-  authUser(){
+  authUser() {
     this.userService.authUser(this.loginForm.value).subscribe(
-      (found:any)=>{
+      (found: any) => {
+        this.auth.saveCredentials(found._id, found.username);
+
         Swal.fire({
           title: 'Success',
-          text: 'Welcome back ' +this.loginForm.value.username,
+          text: 'Welcome back ' + this.loginForm.value.username,
           background: '#2e2e2e',  // Fondo oscuro
           color: '#ffffff',
           icon: 'success',
-          timer: 2000,  
+          timer: 2500,
           timerProgressBar: true,
           showConfirmButton: false
         }).then(() => {
-          
           this.router.navigate(['/Home']);
-        });;
+        });
       },
-      (error:any)=>{
+      (error: any) => {
         Swal.fire({
           title: 'Error',
           text: 'Authentication failed or user not found',
@@ -61,13 +66,6 @@ export class LoginComponent {
           confirmButtonText: 'OK'
         });
       }
-);
-
-
-
+    );
   }
-
-
-  
-
 }

@@ -1,4 +1,8 @@
 import { Component , Input, OnChanges, SimpleChanges } from '@angular/core';
+import { VideosService } from 'src/app/services/videos.service';
+import Swal from 'sweetalert2';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+
 
 @Component({
   selector: 'app-video-list',
@@ -8,37 +12,21 @@ import { Component , Input, OnChanges, SimpleChanges } from '@angular/core';
 export class VideoListComponent {
   isStarred: boolean = false;
   @Input() videosYT: any[] = [];
-  
-  videos = [
-    { 
-      id: 1, 
-      title: 'Video 1', 
-      views: '1000 views', 
-      uploadDate: '2024-08-01', 
-      channelName: 'Channel 1', 
-      description: 'Description for Video 1', 
-      isStarred: false 
-    },
-    { 
-      id: 2, 
-      title: 'Video 2', 
-      views: '2000 views', 
-      uploadDate: '2024-08-02', 
-      channelName: 'Channel 2', 
-      description: 'Description for Video 2', 
-      isStarred: false 
-    },
-    { 
-      id: 3, 
-      title: 'Video 3', 
-      views: '3000 views', 
-      uploadDate: '2024-08-03', 
-      channelName: 'Channel 3', 
-      description: 'Description for Video 3', 
-      isStarred: false 
-    }
-  ];
+  credentials: { userId: string, username: string } | null = null;
 
+
+
+
+
+  constructor(private videosService:VideosService, private userAuth:UserAuthService,) {}
+
+  ngOnInit(): void {
+    this.userAuth.credentials$.subscribe(credentials => {
+      this.credentials = credentials;
+    });
+  }
+
+ 
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['videos']) {
@@ -48,12 +36,53 @@ export class VideoListComponent {
   }
 
   
+  toggleStar(videoId: string) {
+    console.log('Selected video ID:', videoId);
 
-  toggleStar(video: any) {
-    video.isStarred = !video.isStarred;
+    var videoLike={
+       id_usuario:this.credentials?.userId,
+       id_video: videoId ,
 
-    const videoId = video.id.videoId;
-    console.log('Video ID:', videoId);
+    }
+
+
+
+    // Aquí podrías llamar al servicio para hacer la petición con el ID del video
+    this.videosService.likeVideo(videoLike).subscribe(
+    (response:any) => {
+
+      if(this.credentials){
+        console.log('Video liked successfully:', response);
+
+       
+        Swal.fire({
+          title: 'Yahoo!',
+          text: 'You like this video',
+          icon: 'success',
+          background: '#333', // Fondo oscuro
+          color: '#fff', // Texto en blanco
+          confirmButtonColor: '#3085d6'
+        });
+      }
+      else{
+        Swal.fire({
+          title: 'Create an account',
+          text: 'You need an account to like videos',
+          icon: 'warning',
+          background: '#333', // Fondo oscuro
+          color: '#fff', // Texto en blanco
+          confirmButtonColor: '#3085d6'
+        });
+      }
+      
+      },
+      (error:any) => {
+
+       
+        console.error('Error liking video:', error);
+      }
+    );
   }
+
 
 }
