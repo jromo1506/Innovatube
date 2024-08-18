@@ -16,6 +16,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { VideoListComponent } from './components/video-list/video-list.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordTokenComponent } from './pages/reset-password-token/reset-password-token.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     HomeComponent,
     SearchComponent,
     VideoListComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ForgotPasswordComponent,
+    ResetPasswordTokenComponent
   ],
   imports: [
     BrowserModule,

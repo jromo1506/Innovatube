@@ -29,4 +29,16 @@ export class UsersService {
     return this.http.post(this.api.getURL() + "/authUser",user);
   }
 
+  // Resetear contraseña
+
+  forgotPassword(email:any){
+    console.log(email,"El email es");
+    return this.http.post(this.api.getURL() + "/forgotPasswordEmail",email);
+  }
+
+  verifyToken(token:string):Observable<any>{
+    console.log(token,"Se usa el token");
+    return this.http.get("/resetPassword/" + token);
+  }
+
 }
