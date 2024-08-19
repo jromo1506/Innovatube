@@ -24,7 +24,7 @@ export class LoginComponent {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      // recaptcha: new FormControl('', Validators.required)
+      recaptcha: new FormControl('', Validators.required)
     });
   }
 

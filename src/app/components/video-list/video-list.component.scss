@@ -36,3 +36,25 @@ img{
 .desc{
     font-size: 5px;
 }
+
+@media (max-width: 600px) {
+
+    .video-container{
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      
+        color: var(--text-light);
+    }
+
+    .video-img{
+        width: 100%;
+    }
+
+    img{
+        width: 100%;
+    }
+
+
+}
