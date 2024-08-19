@@ -7,7 +7,8 @@
 .navbar-options{
     margin: 0 2%;
    
-
+    display: flex;
+    justify-content: space-between;
    
 }
 
@@ -37,6 +38,8 @@
 }
 
 .navbar-side-options i:hover{
+    display: flex;
+    justify-content: space-around;
     transition: all ease 0.3s;
 }
 
@@ -94,3 +97,38 @@
     color: #FF7517;
     cursor: pointer;
 }
+
+
+/* Media query para pantallas de al menos 600px de ancho */
+@media (max-width: 600px) {
+   
+
+    .navbar-options{
+        margin: 0 2%;
+    
+        display: block !important;
+    
+    }
+
+    .navbar-side-options{
+        display:block;
+        transition: all ease 0.3s;
+        width: 100% !important;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .logo-searchbar{
+        display: block;
+    }
+
+    .searchbar{
+        margin-left: none;
+        margin-top: 15px;
+    }
+
+    .logo{
+        text-align: center;
+    }
+}
+

@@ -1,5 +1,5 @@
 <div class="navbar w-100">
-    <div class="navbar-options flex-sb">
+    <div class="navbar-options">
            <div class="logo-searchbar" >
 
 
@@ -17,17 +17,14 @@
            </div>
 
 
-           <div class="navbar-side-options flex-sa">
+           <div class="navbar-side-options ">
                 <div *ngIf="isLoggedIn" style="font-size: 20px;">
-                    Username | <span class="logout" (click)="logout()">Logout</span>
+                    {{username}} | <span class="logout" (click)="logout()">Logout</span>
                 </div>
                 <div *ngIf="!isLoggedIn" style="font-size: 20px;">
-                    <span class="logout"  routerLink="Login">Log in</span> | <span class="logout"  routerLink="Register">Sign in</span>
+                    <span class="logout"  routerLink="Login">Sign in</span> | <span class="logout"  routerLink="Register">Create account</span>
                 </div>
-                <div>
-                    <i class="fa-solid fa-gear" routerLink="Register"></i>
-                </div>
-                <div>
+                <div *ngIf="isLoggedIn">
                     <i class="fa-solid fa-star" routerLink="Favorite"></i>
                 </div>
            </div>
